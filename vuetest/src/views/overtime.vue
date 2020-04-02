@@ -66,8 +66,8 @@
                     label="操作"
                     width="100">
                 <template slot-scope="scope">
-                    <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-                    <el-button type="text" size="small">编辑</el-button>
+                    <el-button @click="editClick(scope.row)" type="text" size="small">编辑</el-button>
+                    <el-button @click="deleteClick(scope.row)" type="text" size="small">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -87,7 +87,7 @@
 </template>
 <script>
     export default {
-        name: "UserTest",
+        name: "overtime",
         data() {
             return {
                 tableData: [{}],
@@ -100,19 +100,19 @@
             }
         },
         methods: {
+            editClick(row){
+            },
             size(sizepage) {
-
                 this.pagination.pagesize=sizepage
             },
             page(currentPage) {
                 var pagesize =this.pagination.pagesize
                 var userData = this
-                axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (user) {
-                    userData.tableData = user.data.list
-                    userData.pagination.total = user.data.totalCount
-                    userData.pagination.pagesize = user.data.pageSize
-                    // userData.pagination.currentPage=user.data.currentPage
-                    console.log(user)
+                axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (resp) {
+                    userData.tableData = resp.data.list
+                    userData.pagination.total = resp.data.totalCount
+                    userData.pagination.pagesize = resp.data.pageSize
+                    console.log(resp)
 
                 })
 
@@ -122,11 +122,11 @@
         },
         created: function () {
             var userData = this
-            axios.get("http://localhost:8181/Employee/queryEmployee/1/4").then(function (user) {
-                userData.tableData = user.data.list
-                userData.pagination.total = user.data.totalCount
-                userData.pagination.pagesize = user.data.pageSize
-                console.log(user)
+            axios.get("http://localhost:8181/Employee/queryEmployee/1/4").then(function (resp) {
+                userData.tableData = resp.data.list
+                userData.pagination.total = resp.data.totalCount
+                userData.pagination.pagesize = resp.data.pageSize
+                console.log(resp)
 
             })
 

@@ -7,11 +7,7 @@ import com.admin.utils.PageUtils;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,27 +26,27 @@ public class EmployeeController {
     }
 
     @GetMapping("/queryEmployee/{current}/{size}")
-    public PageUtils test(@PathVariable("current") Integer current,@PathVariable("size") Integer size){
-        PageUtils pageUtils=new PageUtils();
+    public PageUtils test(@PathVariable("current") Integer current, @PathVariable("size") Integer size) {
+        PageUtils pageUtils = new PageUtils();
         IPage<EmployeeEntity> page = new Page<>(current, size);
         employeeMapper.selectPage(page, null);
         pageUtils.setCurrentPage(current);
         pageUtils.setPageSize(size);
         pageUtils.setTotalCount((int) page.getTotal());
         pageUtils.setList(page.getRecords());
-        return  pageUtils;
+        return pageUtils;
 
+    }
 
-
-
-
-
-
-
-
-
-
-
+    @PostMapping("/insert")
+    public EmployeeEntity insert(@RequestBody EmployeeEntity employeeEntity) {
+        int employeeEntity1 = employeeMapper.insert(employeeEntity);
+        return employeeEntity;
+    }
+    @PostMapping("/insertTest")
+    public EmployeeEntity save(@RequestBody EmployeeEntity employeeEntity) {
+        int employeeEntity1 = employeeMapper.save(employeeEntity);
+        return employeeEntity;
 
     }
 

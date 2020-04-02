@@ -49,7 +49,7 @@
 
 <script>
     export default {
-        name:"AddUser",
+        name:"addOvertime",
         data() {
             return {
                 user: {
