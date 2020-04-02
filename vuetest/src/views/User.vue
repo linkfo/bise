@@ -108,11 +108,10 @@
             page(currentPage) {
                 var pagesize =this.pagination.pagesize
                 var userData = this
-                axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (user) {
-                    userData.tableData = user.data.list
-                    userData.pagination.total = user.data.totalCount
-                    userData.pagination.pagesize = user.data.pageSize
-                    // userData.pagination.currentPage=user.data.currentPage
+                axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (resp) {
+                    userData.tableData = resp.data.list
+                    userData.pagination.total = resp.data.totalCount
+                    userData.pagination.pagesize = resp.data.pageSize
                     console.log(user)
 
                 })
@@ -123,11 +122,11 @@
         },
         created: function () {
             var userData = this
-            axios.get("http://localhost:8181/Employee/queryEmployee/1/4").then(function (user) {
-                userData.tableData = user.data.list
-                userData.pagination.total = user.data.totalCount
-                userData.pagination.pagesize = user.data.pageSize
-                console.log(user)
+            axios.get("http://localhost:8181/Employee/queryEmployee/1/4").then(function (resp) {
+                userData.tableData = resp.data.list
+                userData.pagination.total = resp.data.totalCount
+                userData.pagination.pagesize = resp.data.pageSize
+                console.log(resp)
 
             })
 

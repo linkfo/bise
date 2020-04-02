@@ -54,7 +54,7 @@ const routes = [
         children: [
             {
                 path: "/attendance",
-                name: "attendance",
+                name: "出勤/签到记录",
                 component: attendance
             },
             {

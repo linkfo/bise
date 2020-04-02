@@ -20,8 +20,6 @@ public class EmployeeController {
     @GetMapping("findAll")
     public List<EmployeeEntity> findAll() {
         List<EmployeeEntity> employeeEntities = employeeMapper.findAll();
-
-
         return employeeEntities;
     }
 

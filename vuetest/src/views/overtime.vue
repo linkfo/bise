@@ -6,13 +6,13 @@
                 style="width: 100%;height: auto">
             <el-table-column
                     fixed
-                    prop="emid"
+                    prop="olid"
                     label="id"
                     width="150">
             </el-table-column>
             <el-table-column
-                    prop="password"
-                    label="密码"
+                    prop="emid"
+                    label="员工id"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -21,38 +21,13 @@
                     width="120">
             </el-table-column>
             <el-table-column
-                    prop="age"
-                    label="年龄"
+                    prop="day"
+                    label="day"
                     width="120">
             </el-table-column>
             <el-table-column
-                    prop="gender"
-                    label="性别"
-                    width="120">
-            </el-table-column>
-            <el-table-column
-                    prop="identity"
-                    label="身份证"
-                    width="120">
-            </el-table-column>
-            <el-table-column
-                    prop="bankid"
-                    label="银行卡号"
-                    width="120">
-            </el-table-column>
-            <el-table-column
-                    prop="tel"
-                    label="手机"
-                    width="120">
-            </el-table-column>
-            <el-table-column
-                    prop="department"
-                    label="部门"
-                    width="120">
-            </el-table-column>
-            <el-table-column
-                    prop="position"
-                    label="单位"
+                    prop="hour"
+                    label="小时"
                     width="120">
             </el-table-column>
             <el-table-column
@@ -60,6 +35,7 @@
                     label="备注"
                     width="120">
             </el-table-column>
+
 
             <el-table-column
                     fixed="right"
@@ -87,7 +63,7 @@
 </template>
 <script>
     export default {
-        name: "overtime",
+        name: "attendance",
         data() {
             return {
                 tableData: [{}],
@@ -108,7 +84,7 @@
             page(currentPage) {
                 var pagesize =this.pagination.pagesize
                 var userData = this
-                axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (resp) {
+                axios.get("http://localhost:8181/Overtime/queryOvertime/" + (currentPage) + "/" + (pagesize)).then(function (resp) {
                     userData.tableData = resp.data.list
                     userData.pagination.total = resp.data.totalCount
                     userData.pagination.pagesize = resp.data.pageSize
@@ -122,7 +98,7 @@
         },
         created: function () {
             var userData = this
-            axios.get("http://localhost:8181/Employee/queryEmployee/1/4").then(function (resp) {
+            axios.get("http://localhost:8181/Overtime/queryOvertime/1/4").then(function (resp) {
                 userData.tableData = resp.data.list
                 userData.pagination.total = resp.data.totalCount
                 userData.pagination.pagesize = resp.data.pageSize

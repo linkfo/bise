@@ -21,7 +21,7 @@ public class OvertimeLeaveEntity implements Serializable {
 
 	private String day;
 
-	private String hourse;
+	private String hour;
 
 	private String note;
 
