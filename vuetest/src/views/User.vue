@@ -95,24 +95,45 @@
                     total: 0,
                     pageSize: 4,
                     pageSizes: [2, 4, 6],
-                    currentpage:1
+                    currentpage: 1
                 }
             }
         },
         methods: {
-            editClick(row){
+            editClick(row) {
+                console.log(row.emid);
+                this.$router.push({
+                    path: "/userUpdate",
+                    query: {
+                        emid: row.emid
+                    }
+                })
+            },
+            deleteClick(row) {
+                const _this = this;
+                axios.delete("http://localhost:8181/Employee/delect/" + row.emid).then(function (resp) {
+                    console.log(resp)
+                    if (resp.status == 200) {
+                        _this.$message({
+                            message: row.emid + '删除成功',
+                            type: 'success'
+                        });
+
+                    }
+                    parent.location.reload();
+                })
             },
             size(sizepage) {
-                this.pagination.pagesize=sizepage
+                this.pagination.pagesize = sizepage
             },
             page(currentPage) {
-                var pagesize =this.pagination.pagesize
+                var pagesize = this.pagination.pagesize
                 var userData = this
                 axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (resp) {
                     userData.tableData = resp.data.list
                     userData.pagination.total = resp.data.totalCount
                     userData.pagination.pagesize = resp.data.pageSize
-                    console.log(user)
+                    console.log(resp);
 
                 })
 

@@ -18,7 +18,7 @@ public interface AttendanceMapper extends BaseMapper<AttendanceEntity> {
 
     @Select("select * from attendance ")
     List<AttendanceEntity> findAll();
-    @Insert("INSERT INTO smas.employee  " +
-            "values (#{emid},#{password},#{name},#{age},#{gender},#{identity},#{bankid},#{tel},#{department},#{position},#{note});")
+    @Insert("INSERT INTO smas.attendance  " +
+            "values (#{atid},#{enid},#{name},#{day},#{am},#{pm},#{note});")
     int save(AttendanceEntity enity);
 }

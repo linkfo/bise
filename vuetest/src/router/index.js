@@ -8,7 +8,7 @@ import overtime from "../views/overtime";
 import addOvertime from "../views/addOvertime";
 import performance from "../views/performance";
 import addPerformance from "../views/addPerformance";
-
+import userUpdate from "../views/userUpdate";
 
 
 import App from "../App";
@@ -24,6 +24,7 @@ const routes = [
         name: "用户",
         component: Index,
         redirect: "/User",
+        show:true,
         children: [
             {
                 path: "/User",
@@ -51,6 +52,7 @@ const routes = [
         path: "/navigation",
         name: "出勤/签到",
         component: Index,
+        show:true,
         children: [
             {
                 path: "/attendance",
@@ -68,6 +70,7 @@ const routes = [
         path: "/navigation2",
         name: "休假记录",
         component: Index,
+        show:true,
         children: [
             {
                 path: "/overtime",
@@ -85,6 +88,7 @@ const routes = [
         path: "/navigation3",
         name: "绩效考核",
         component: Index,
+        show:true,
         children: [
             {
                 path: "/performance",
@@ -97,7 +101,22 @@ const routes = [
                 component: addPerformance
             }
         ]
-    }
+    },
+    {
+        path: "/navigation4",
+        name: "other",
+        component: Index,
+        show:false,
+        children: [
+            {
+                path:'/userUpdate',
+                //name:"更新图书",
+                component: userUpdate,
+
+            }
+        ]
+    },
+
 ]
 
 const router = new VueRouter({

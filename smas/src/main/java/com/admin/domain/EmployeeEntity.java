@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 @TableName("employee")
 public class EmployeeEntity implements Serializable {
-
+    @TableId("emid")
     private String emid;
     // 密码
     private String password;

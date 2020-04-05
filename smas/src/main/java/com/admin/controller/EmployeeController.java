@@ -6,6 +6,7 @@ import com.admin.utils.PageUtils;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +42,7 @@ public class EmployeeController {
         int employeeEntity1 = employeeMapper.insert(employeeEntity);
         return employeeEntity;
     }
+
     @PostMapping("/insertTest")
     public EmployeeEntity save(@RequestBody EmployeeEntity employeeEntity) {
         int employeeEntity1 = employeeMapper.save(employeeEntity);
@@ -48,6 +50,20 @@ public class EmployeeController {
 
     }
 
+    @GetMapping("/update/{id}")
+    public EmployeeEntity findById(@PathVariable("id") String id) {
+        return employeeMapper.selectById(id);
+    }
+    @PostMapping("/update")
+    public EmployeeEntity update(@RequestBody EmployeeEntity employeeEntity){
+        employeeMapper.updateById(employeeEntity);
+        return employeeEntity;
+    }
+    @DeleteMapping("/delect/{id}")
+    public void delect(@PathVariable("id") String id){
+        employeeMapper.deleteById(id);
+
+    }
 
     @GetMapping("findu")
     public List<EmployeeEntity> findu() {
