@@ -80,7 +80,28 @@
             }
         },
         methods: {
-            editClick(row){
+            editClick(row) {
+                console.log(row.atid);
+                this.$router.push({
+                    path: "/attendanceUpdate",
+                    query: {
+                        atid: row.atid
+                    }
+                })
+            },
+            deleteClick(row) {
+                const _this = this;
+                axios.delete("http://localhost:8181/Attendance/delect/" + row.atid).then(function (resp) {
+                    console.log(resp)
+                    if (resp.status == 200) {
+                        _this.$message({
+                            message: row.atid + '删除成功',
+                            type: 'success'
+                        });
+
+                    }
+                    parent.location.reload();
+                })
             },
             size(sizepage) {
                 this.pagination.pagesize=sizepage

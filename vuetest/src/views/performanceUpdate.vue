@@ -39,7 +39,7 @@
                 <el-input v-model="user.note"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="onSubmit('user')">提交</el-button>
+                <el-button type="primary" @click="onSubmit('user')">立即创建</el-button>
                 <el-button @click="resetForm('user')">重置</el-button>
 
             </el-form-item>

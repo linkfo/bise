@@ -1,6 +1,7 @@
 package com.admin.controller;
 
 import com.admin.domain.AttendanceEntity;
+import com.admin.domain.EmployeeEntity;
 import com.admin.service.AttendanceMapper;
 import com.admin.utils.PageUtils;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -41,7 +42,20 @@ public class AttendanceController {
         return attendanceEntity;
     }
 
+    @GetMapping("/update/{id}")
+    public AttendanceEntity findById(@PathVariable("id") String id) {
+        return attendanceMapper.selectById(id);
+    }
+    @PostMapping("/update")
+    public AttendanceEntity update(@RequestBody AttendanceEntity attendanceEntity){
+        attendanceMapper.updateById(attendanceEntity);
+        return attendanceEntity;
+    }
+    @DeleteMapping("/delect/{id}")
+    public void delect(@PathVariable("id") String id){
+        attendanceMapper.deleteById(id);
 
+    }
 
 
 

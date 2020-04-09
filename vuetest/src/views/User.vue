@@ -95,7 +95,8 @@
                     total: 0,
                     pageSize: 4,
                     pageSizes: [2, 4, 6],
-                    currentpage: 1
+                    currentpage: 1,
+
                 }
             }
         },
@@ -124,10 +125,11 @@
                 })
             },
             size(sizepage) {
-                this.pagination.pagesize = sizepage
+                this.pagination.pageSize = sizepage
+                this.$root.reload()
             },
             page(currentPage) {
-                var pagesize = this.pagination.pagesize
+                var pagesize = this.pagination.pageSize
                 var userData = this
                 axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (resp) {
                     userData.tableData = resp.data.list
@@ -136,14 +138,16 @@
                     console.log(resp);
 
                 })
-
+                this.pagination.currentpage=currentPage
             },
 
 
         },
         created: function () {
+            var currentPage = this.pagination.currentpage
+            var pagesize = this.pagination.pageSize
             var userData = this
-            axios.get("http://localhost:8181/Employee/queryEmployee/1/4").then(function (resp) {
+            axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (resp) {
                 userData.tableData = resp.data.list
                 userData.pagination.total = resp.data.totalCount
                 userData.pagination.pagesize = resp.data.pageSize

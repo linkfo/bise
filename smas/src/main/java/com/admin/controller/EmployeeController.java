@@ -65,8 +65,8 @@ public class EmployeeController {
 
     }
 
-    @GetMapping("findu")
-    public List<EmployeeEntity> findu() {
+    @GetMapping("login")
+    public List<EmployeeEntity> login() {
         List<EmployeeEntity> employeeEntities2 = employeeMapper.findUser();
         return employeeEntities2;
     }

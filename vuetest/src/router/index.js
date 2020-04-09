@@ -8,8 +8,11 @@ import overtime from "../views/overtime";
 import addOvertime from "../views/addOvertime";
 import performance from "../views/performance";
 import addPerformance from "../views/addPerformance";
-import userUpdate from "../views/userUpdate";
-
+import userUpdate from "../views/userUpdate"
+import attendanceUpdate from "../views/attendanceUpdate";
+import performanceUpdate from "../views/performanceUpdate";
+import overtimeUpdate from "../views/overtimeUpdate";
+import login from "../views/login";
 
 import App from "../App";
 import Index from "../views/index";
@@ -109,9 +112,34 @@ const routes = [
         show:false,
         children: [
             {
+                path:'/login',
+                //name:"登录",
+                component: login,
+
+            },
+            {
                 path:'/userUpdate',
-                //name:"更新图书",
+                //name:"更新员工记录",
                 component: userUpdate,
+
+            },
+            {
+                path:'/performanceUpdate',
+                //name:"更新绩效",
+                component: performanceUpdate,
+
+            }
+            ,
+            {
+                path:'/attendanceUpdate',
+                //name:"更新出席",
+                component: attendanceUpdate,
+
+            },
+            {
+                path:'/overtimeUpdate',
+                //name:"更新请假",
+                component: overtimeUpdate,
 
             }
         ]
