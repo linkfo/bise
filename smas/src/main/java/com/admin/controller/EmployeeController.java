@@ -65,10 +65,14 @@ public class EmployeeController {
 
     }
 
-    @GetMapping("login")
-    public List<EmployeeEntity> login() {
-        List<EmployeeEntity> employeeEntities2 = employeeMapper.findUser();
-        return employeeEntities2;
+    @GetMapping("login/{id}/{password}")
+    public String login(@PathVariable("id") String id,@PathVariable("password") String password) {
+        EmployeeEntity employeeEntities2 = employeeMapper.findUser(id,password);
+        if (employeeEntities2!=null){
+            return id;
+        }else{
+            return "error";
+        }
     }
 
     @GetMapping("findt")

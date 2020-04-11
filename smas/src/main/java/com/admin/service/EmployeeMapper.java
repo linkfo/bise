@@ -16,8 +16,8 @@ public interface EmployeeMapper extends BaseMapper<EmployeeEntity> {
 
     @Select("select * from employee ")
     List<EmployeeEntity> findAll();
-    @Select("select emid,password,identity from employee ")
-    List<EmployeeEntity> findUser();
+    @Select("select emid,password from employee where emid=#{emid} and password=#{password}")
+    EmployeeEntity findUser(@Param("emid") String emid,@Param("password") String password);
     @Select("select emid,password,bankid from employee")
     List<EmployeeEntity> findTest();
     @Insert("INSERT INTO smas.employee (`emid`, `password`, `name`, `age`, `gender`, `identity`, `bankid`, `tel`, `department`, `position`,`note`) " +

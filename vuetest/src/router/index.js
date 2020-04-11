@@ -26,7 +26,8 @@ const routes = [
         path: "/",
         name: "用户",
         component: Index,
-        redirect: "/User",
+        //redirect: "/User",
+        redirect: "/login",
         show:true,
         children: [
             {
@@ -52,7 +53,7 @@ const routes = [
         ]
     },
     {
-        path: "/navigation",
+        path: "/navigation1",
         name: "出勤/签到",
         component: Index,
         show:true,
@@ -106,14 +107,14 @@ const routes = [
         ]
     },
     {
-        path: "/navigation4",
+        path: "/O",
         name: "other",
         component: Index,
         show:false,
         children: [
             {
                 path:'/login',
-                //name:"登录",
+                name:"登录",
                 component: login,
 
             },
