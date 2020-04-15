@@ -12,7 +12,7 @@ import userUpdate from "../views/userUpdate"
 import attendanceUpdate from "../views/attendanceUpdate";
 import performanceUpdate from "../views/performanceUpdate";
 import overtimeUpdate from "../views/overtimeUpdate";
-import login from "../views/login";
+import login from "../views/logintest";
 
 import App from "../App";
 import Index from "../views/index";

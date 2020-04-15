@@ -132,6 +132,7 @@
                 var pagesize = this.pagination.pageSize
                 var userData = this
                 axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (resp) {
+
                     userData.tableData = resp.data.list
                     userData.pagination.total = resp.data.totalCount
                     userData.pagination.pagesize = resp.data.pageSize
@@ -147,6 +148,7 @@
             var currentPage = this.pagination.currentpage
             var pagesize = this.pagination.pageSize
             var userData = this
+
             axios.get("http://localhost:8181/Employee/queryEmployee/" + (currentPage) + "/" + (pagesize)).then(function (resp) {
                 userData.tableData = resp.data.list
                 userData.pagination.total = resp.data.totalCount
