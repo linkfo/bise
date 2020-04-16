@@ -16,8 +16,8 @@
                     <el-dropdown>
                         <i class="el-icon-setting" style="margin-right: 15px"></i>
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>登录</el-dropdown-item>
-                            <el-dropdown-item>退出</el-dropdown-item>
+                            <el-dropdown-item @click.native="login()">登录</el-dropdown-item>
+                            <el-dropdown-item @click.native="exit()">退出</el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                     <span @func="getemid">{{emid}}</span>
@@ -42,6 +42,17 @@
 
         },
         methods: {
+            login(){
+                this.$router.push({
+                    path:"/login"
+                })
+            },
+            exit(){
+                this.$router.push({
+                    path: "/login"
+
+                })
+            },
             getemid(data){
                 this.emid=data
                 alert(this.emid)

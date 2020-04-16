@@ -38,7 +38,20 @@ public class PerformanceController {
         return performanceEntity;
     }
 
+    @GetMapping("/update/{id}")
+    public PerformanceEntity findById(@PathVariable("id") String id) {
+        return performanceMapper.selectById(id);
+    }
+    @PostMapping("/update")
+    public PerformanceEntity update(@RequestBody PerformanceEntity performanceEntity){
+        performanceMapper.updateById(performanceEntity);
+        return performanceEntity;
+    }
+    @DeleteMapping("/delect/{id}")
+    public void delect(@PathVariable("id") String id){
+        performanceMapper.deleteById(id);
 
+    }
 
 
 

@@ -38,6 +38,21 @@ public class OvertimeController {
         return overtimeLeaveEntity;
     }
 
+    @GetMapping("/update/{id}")
+    public OvertimeLeaveEntity findById(@PathVariable("id") String id) {
+        return overtimeLeaveMapper.selectById(id);
+    }
+
+    @PostMapping("/update")
+    public OvertimeLeaveEntity update(@RequestBody OvertimeLeaveEntity overtimeLeaveEntity){
+        overtimeLeaveMapper.updateById(overtimeLeaveEntity);
+        return overtimeLeaveEntity;
+    }
+    @DeleteMapping("/delect/{id}")
+    public void delect(@PathVariable("id") String id){
+        overtimeLeaveMapper.deleteById(id);
+
+    }
 
 
 
