@@ -13,7 +13,7 @@ import lombok.Data;
 public class OvertimeLeaveEntity implements Serializable {
 
 	@TableId
-	private String olid;
+	private int olid;
 
 	private String emid;
 

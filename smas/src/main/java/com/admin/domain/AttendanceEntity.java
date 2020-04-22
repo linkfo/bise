@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AttendanceEntity implements Serializable {
 
 	@TableId
-	private String atid;
+	private int atid;
 
 	private String emid;
 

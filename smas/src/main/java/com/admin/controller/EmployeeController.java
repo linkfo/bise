@@ -96,6 +96,9 @@ public class EmployeeController {
                 jsonObject.put("message", "登录失败,密码错误");
                 return jsonObject;
             } else {
+                if(userForBase.getNote().equals(employeeEntity.getNote())){
+                    jsonObject.put("note",employeeEntity.getNote());
+                }
                 String token = tokenService.getToken(userForBase);
                 jsonObject.put("message", "登录成功");
                 jsonObject.put("token", token);

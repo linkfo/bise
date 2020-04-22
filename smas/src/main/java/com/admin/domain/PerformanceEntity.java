@@ -14,7 +14,7 @@ public class PerformanceEntity implements Serializable {
 
 
 	@TableId
-	private String peid;
+	private int peid;
 
 	private String emid;
 
